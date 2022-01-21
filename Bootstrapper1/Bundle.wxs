@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+	<Bundle Name="My test application" Version="1.0.0.1" Manufacturer="KasperskyLab" UpgradeCode="5c23f022-dc54-43b5-bc4e-8810f53bf19b"  DisableModify="yes"  DisableRepair="yes">
+		<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.HyperlinkLicense">
+			<bal:WixStandardBootstrapperApplication
+					LicenseUrl=""
+					ThemeFile="HyperlinkTheme.xml"
+					LocalizationFile="HyperlinkTheme.wxl"
+					SuppressOptionsUI="yes" 
+					SuppressRepair="yes"/>
+		</BootstrapperApplicationRef>
+
+		<Chain>
+			<!-- TODO: Define the list of chained packages. -->
+			<MsiPackage SourceFile="$(var.SetupProject1.TargetPath)" Compressed="no" />
+		</Chain>
+	</Bundle>
+</Wix>

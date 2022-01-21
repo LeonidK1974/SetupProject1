@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="{0F919FEB-24B5-4C63-87AA-A0E5E79284C8}" Name="My test application" Language="1033" Version="1.0.1.0" Manufacturer="KasperskyLab" UpgradeCode="98a8044a-626f-42ba-a4d8-f0c76edaa18e">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate  EmbedCab="yes"/>
+
+		<Feature Id="ProductFeature" Title="SetupProject1" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+		<Property Id="MsiLogging" Value="voicewarmup" />
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="MyAppFolder" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<Component Id="ProductComponent" Guid="{24C227AB-066E-424A-BF37-7EC0838452FF}">
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+				<File Id="file1.exe" Name="file1.exe" Vital="yes" KeyPath="yes" Source="$(var.BinariesX86Dir)file1.exe" />
+			</Component> 
+		</ComponentGroup>
+	</Fragment>
+</Wix>
